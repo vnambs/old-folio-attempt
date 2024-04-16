@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import "./button.css";
 
 interface ButtonProps {
@@ -27,7 +27,7 @@ interface ButtonProps {
 /**
  * Primary UI component for user interaction
  */
-const Button = ({
+export const Button: FunctionComponent<ButtonProps> = ({
   primary = false,
   size = "medium",
   backgroundColor,
@@ -64,5 +64,3 @@ Button.defaultProps = {
     console.warn("onClick function is not provided.");
   },
 };
-
-export default Button;
