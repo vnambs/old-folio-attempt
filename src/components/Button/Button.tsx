@@ -34,7 +34,7 @@ const Button = ({
 	return (
 		<button
 			type={type}
-			className={` rounded-md px-6 py-2 ${getVariant(variant, disabled)} ${className}  `}
+			className={`rounded-md px-6 py-2 ${getVariant(variant, disabled)} ${className}`}
 			disabled={disabled}
 			{...rest}
 		>
