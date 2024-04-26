@@ -87,20 +87,17 @@ module.exports = {
 		],
 		// React rules
 		"react/jsx-fragments": ["warn", "syntax"], // Shorthand syntax for React fragments
-		"react/jsx-filename-extension": [
-			"warn",
-			{
-				extensions: ["ts", "tsx"],
-			},
-		],
 		"react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
 		"react-hooks/exhaustive-deps": "warn", // Checks effect dependencies
-		"react/react-in-jsx-scope": "off",
 		"react/prop-types": "off",
 		"import/no-extraneous-dependencies": [
 			"error",
 			{
-				devDependencies: ["**/*.stories.*", "**/.storybook/**/*.*"],
+				devDependencies: [
+					"**/*.stories.*",
+					"**/.storybook/**/*.*",
+					"**/daisyui/**/*.*",
+				],
 				peerDependencies: true,
 			},
 		],

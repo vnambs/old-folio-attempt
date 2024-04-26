@@ -1,11 +1,17 @@
 import React from "react";
+import { Color, Size } from "./Types";
 
 const disabledClass = "bg-disabled text-disabled";
 
 export type ButtonProps = {
+	icon?: React.ReactElement;
+	iconAfter?: React.ReactElement;
 	children: React.ReactNode;
 	variant?: "primary" | "secondary" | "tertiary";
 	type: "button" | "submit" | "reset";
+	onClick?: void;
+	color: Color;
+	size: Size;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 function getVariant(
@@ -29,14 +35,44 @@ const Button = ({
 	className,
 	disabled,
 	type = "button",
+	onClick,
+	color,
+	size,
 	...rest
 }: ButtonProps) => {
+	const colorClasses = {
+		primary: "btn-primary",
+		secondary: "btn-secondary",
+		success: "btn-success",
+		neutral: "btn-neutral",
+		default: "btn-default",
+		accent: "btn-accent",
+	};
+
+	const textColors = {
+		primary: " hover:bg-white hover:text-primary",
+		secondary: " hover:bg-white hover:text-secondary",
+		success: " hover:bg-white hover:text-success",
+		neutral: " hover:bg-white hover:text-neutral",
+		default: "",
+		accent: "hover:bg-white hover:text-accent",
+	};
+
+	const sizeVariant = {
+		lg: "btn-lg",
+		md: "btn-md",
+		sm: "btn-sm",
+		xs: "btn-xs",
+		block: "btn-block",
+	};
+	const ButtonClassName = `${getVariant(variant, disabled)} ${className} ${colorClasses[color]} ${sizeVariant[size]} ${textColors[color]}`;
 	return (
 		<button
 			type={type}
-			className={`rounded-md px-6 py-2 ${getVariant(variant, disabled)} ${className}`}
+			className={ButtonClassName}
 			disabled={disabled}
 			{...rest}
+			onClick={onClick}
 		>
 			{children}
 		</button>

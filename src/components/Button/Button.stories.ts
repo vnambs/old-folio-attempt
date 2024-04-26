@@ -1,4 +1,5 @@
 import { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 import Button, { ButtonProps } from "./Button";
 
 const meta: Meta<ButtonProps> = {
@@ -17,16 +18,30 @@ const meta: Meta<ButtonProps> = {
 		type: {
 			type: "string",
 		},
+		color: {
+			color: "string",
+		},
+		size: {
+			size: "string",
+		},
+		icon: {
+			icon: "string",
+		},
+		iconAfter: {
+			iconAfter: "string",
+		},
+		onClick: fn(),
 	},
 };
 
-const violet = "theme-violet";
+const violet = "btn btn-active btn-primary";
 
 export default meta;
 
 export const Primary: StoryObj<ButtonProps> = {
 	args: {
 		children: "Button",
+		color: "primary",
 	},
 };
 export const Disabled: StoryObj<ButtonProps> = {
