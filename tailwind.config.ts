@@ -32,7 +32,6 @@ const config: Config = {
 			},
 		],
 	},
-	// eslint-disable-line global-require
 	plugins: [require("daisyui")],
 };
 export default config;
