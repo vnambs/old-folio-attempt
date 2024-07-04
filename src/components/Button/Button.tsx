@@ -12,6 +12,8 @@ export type ButtonProps = {
 	onClick?: void;
 	color: Color;
 	size: Size;
+	padding?: string;
+	fontSize?: string;
 } & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 function getVariant(
@@ -38,6 +40,10 @@ const Button = ({
 	onClick,
 	color,
 	size,
+	icon,
+	iconAfter,
+	padding,
+	fontSize,
 	...rest
 }: ButtonProps) => {
 	const colorClasses = {
@@ -74,7 +80,9 @@ const Button = ({
 			{...rest}
 			onClick={onClick}
 		>
-			{children}
+			{icon}
+			<span className={`${padding} ${fontSize || ""}`}>{children}</span>
+			{iconAfter}
 		</button>
 	);
 };

@@ -31,6 +31,7 @@
     "eslint-plugin-security": "1.4.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
     "eslint-plugin-sonarjs": "0.12.0",
+    "iconsax-react": "^0.0.8",
     "next": "14.2.1",
     "prettier": "^3.2.5",
     "react": "^18",

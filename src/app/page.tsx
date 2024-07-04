@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import MyServices from "@/components/my-services";
 
 export default function Home() {
 	return (
@@ -28,6 +29,9 @@ export default function Home() {
 								services to help your business stand out.
 							</p>
 						</div>
+					</div>
+					<div className="bottom-2 fixed">
+						<MyServices />
 					</div>
 				</div>
 			</main>
