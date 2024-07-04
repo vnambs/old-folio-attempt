@@ -17,6 +17,7 @@
     "commit": "cz"
   },
   "dependencies": {
+    "@commitlint/config-conventional": "^19.2.2",
     "@types/three": "^0.166.0",
     "@typescript-eslint/eslint-plugin": "5.12.1",
     "commitizen": "^4.3.0",

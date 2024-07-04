@@ -59,7 +59,6 @@ const ThreeScene: React.FC = () => {
 			}
 			renderer.dispose();
 		};
-
 	}, []);
 
 	return <div ref={containerRef} />;
