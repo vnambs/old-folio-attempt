@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowCircleDown2 } from "iconsax-react";
+import { DirectDown } from "iconsax-react";
 import Button from "../Button/Button";
 
 const MyServices = () => {
@@ -11,10 +11,10 @@ const MyServices = () => {
 				type="button"
 				className="flex items-center bg-transparent border-none cursor-pointer p-0 w-44 text-lg"
 				icon={
-					<ArrowCircleDown2
-						size="32"
-						color="#629C6A"
+					<DirectDown
+						color="#6EC277"
 						className="mr-4"
+						variant="Bulk"
 					/>
 				}
 			>

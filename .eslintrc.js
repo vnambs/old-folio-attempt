@@ -102,5 +102,8 @@ module.exports = {
 			},
 		],
 		"react/button-has-type": "warn",
+		"react/no-array-index-key": "warn",
+		"consistent-return": "warn",
+		"prefer-destructuring": "warn",
 	},
 };
