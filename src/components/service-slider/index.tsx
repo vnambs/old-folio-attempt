@@ -23,7 +23,7 @@ const ServiceSlider: React.FC<IProps> = ({
 	classNameCarousel = "",
 	classNameForImage = "",
 	isAutoPlay = true,
-	autoPlayInterval = 10,
+	autoPlayInterval = 100,
 }) => {
 	const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -52,7 +52,7 @@ const ServiceSlider: React.FC<IProps> = ({
 		}
 	}, [imgs.length, isAutoPlay, autoPlayInterval]);
 	return (
-		<div className="relative flex max-w-screen-lg top-16 place-items-center">
+		<div className="flex max-w-screen-lg">
 			<div
 				id={carouselId}
 				ref={carouselRef}
