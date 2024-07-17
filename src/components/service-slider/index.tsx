@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { twMerge } from "tailwind-merge";
 
 type Iimg = {
@@ -14,7 +14,7 @@ type IProps = {
 	classNameCarousel?: string;
 	classNameForImage?: string;
 	isAutoPlay?: boolean;
-	autoPlayMilliseconds?: number;
+	autoPlayInterval?: number;
 };
 
 const ServiceSlider: React.FC<IProps> = ({
@@ -23,49 +23,69 @@ const ServiceSlider: React.FC<IProps> = ({
 	classNameCarousel = "",
 	classNameForImage = "",
 	isAutoPlay = true,
-	autoPlayMilliseconds = 5000,
+	autoPlayInterval = 10,
 }) => {
+	const carouselRef = useRef<HTMLDivElement>(null);
+
 	useEffect(() => {
-		if (isAutoPlay) {
-			const interval = setInterval(() => {
-				const carousel = document.getElementById(carouselId);
-				if (carousel) {
-					const { scrollWidth } = carousel;
-					const currentScroll = carousel.scrollLeft;
-					const carouselWidth = carousel.clientWidth;
+		const carousel = carouselRef.current;
+		if (carousel) {
+			const totalImages = imgs.length;
+			const singleImageWidth = carousel.clientWidth / totalImages;
 
-					const isEndOfCarousel =
-						currentScroll + carouselWidth >= scrollWidth;
-					carousel.scrollTo({
-						left: isEndOfCarousel
-							? 0
-							: currentScroll + carouselWidth,
-						behavior: "smooth",
-					});
-				}
-			}, autoPlayMilliseconds);
+			if (isAutoPlay) {
+				const interval = setInterval(() => {
+					const maxScrollLeft =
+						carousel.scrollWidth - carousel.clientWidth;
+					if (
+						carousel.scrollLeft >=
+						maxScrollLeft - singleImageWidth
+					) {
+						carousel.scrollLeft = 0;
+					} else {
+						carousel.scrollLeft += singleImageWidth;
+					}
+				}, autoPlayInterval);
 
-			return () => clearInterval(interval);
+				return () => clearInterval(interval);
+			}
 		}
-	}, [carouselId, isAutoPlay, autoPlayMilliseconds]);
-
+	}, [imgs.length, isAutoPlay, autoPlayInterval]);
 	return (
-		<div
-			id={carouselId}
-			className={twMerge(
-				"carousel carousel-center rounded-box max-w-screen space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent",
-				classNameCarousel
-			)}
-		>
-			{imgs.map((img, index) => (
-				<div key={index} className="carousel-item">
-					<img
-						src={img.src}
-						className={twMerge("rounded-box", classNameForImage)}
-						alt={img.alt || `image-${index}`}
-					/>
-				</div>
-			))}
+		<div className="relative flex max-w-screen-lg top-16 place-items-center">
+			<div
+				id={carouselId}
+				ref={carouselRef}
+				className={twMerge(
+					"carousel carousel-center rounded-box w-full space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent mask-gradient",
+					classNameCarousel
+				)}
+			>
+				{imgs.map((img, index) => (
+					<div key={index} className="carousel-item">
+						<img
+							src={img.src}
+							className={twMerge(
+								"rounded-box",
+								classNameForImage
+							)}
+							alt={img.alt || `image-${index}`}
+						/>
+					</div>
+				))}
+				{imgs.map((img, index) => (
+					<div key={`clone-${index}`} className="carousel-item">
+						<img
+							src={img.src}
+							className={twMerge(
+								"rounded-box",
+								classNameForImage
+							)}
+							alt={img.alt || `image-clone-${index}`}
+						/>
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };
@@ -74,7 +94,7 @@ ServiceSlider.defaultProps = {
 	classNameCarousel: "",
 	classNameForImage: "",
 	isAutoPlay: true,
-	autoPlayMilliseconds: 5000,
+	autoPlayInterval: 3000,
 };
 
 export default ServiceSlider;

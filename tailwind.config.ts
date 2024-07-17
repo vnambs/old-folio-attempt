@@ -32,6 +32,16 @@ const config: Config = {
 			},
 		],
 	},
-	plugins: [require("daisyui")],
+	plugins: [
+		require("daisyui"),
+		function ({ addUtilities }:any) {
+			addUtilities({
+				".mask-gradient": {
+					maskImage:
+						"linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgb(0, 0, 0) 12.5%, rgb(0, 0, 0) 87.5%, rgba(0, 0, 0, 0) 100%)",
+				},
+			});
+		},
+	],
 };
 export default config;
