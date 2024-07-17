@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import MyServices from "@/components/my-services";
 import ServiceSlider from "@/components/service-slider";
+import ServicesCard from "@/components/services-card";
 import dynamic from "next/dynamic";
 
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
@@ -139,11 +140,12 @@ export default function Home() {
 	return (
 		<>
 			<AnimatedCursor
+				color="255, 255, 255"
 				innerSize={8}
 				outerSize={35}
 				innerScale={1}
 				outerScale={1.7}
-				outerAlpha={0}
+				outerAlpha={1}
 				outerStyle={{
 					mixBlendMode: "exclusion",
 				}}
@@ -180,14 +182,36 @@ export default function Home() {
 						</div>
 					</section>
 					<section className="bg-cover grid w-full place-items-center bg-center min-h-screen">
-						<ServiceSlider
-							imgs={placeholderImages}
-							carouselId="placeholder-carousel"
-							classNameCarousel="rounded-box"
-						/>
-						<h2 className="text-5xl md:text-7xl font-bold">
-							Web Designer
-						</h2>
+						<div className="place-items-center relative grid top-16">
+							<ServiceSlider
+								imgs={placeholderImages}
+								carouselId="placeholder-carousel"
+								classNameCarousel="rounded-box"
+							/>
+							<div className="flex flex-row gap-4">
+								<ServicesCard
+									number="01"
+									title="WEB DESIGN"
+									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
+									linkText="ABOUT WEB DESIGN"
+									link="https://www.google.com"
+								/>
+								<ServicesCard
+									number="02"
+									title="WEB DESIGN"
+									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
+									linkText="ABOUT WEB DESIGN"
+									link="https://www.google.com"
+								/>
+								<ServicesCard
+									number="03"
+									title="WEB DESIGN"
+									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
+									linkText="ABOUT WEB DESIGN"
+									link="https://www.google.com"
+								/>
+							</div>
+						</div>
 					</section>
 				</main>
 			</div>

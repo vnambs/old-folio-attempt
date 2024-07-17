@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import { DirectDown } from "iconsax-react";
 import Button from "../Button/Button";
 
@@ -18,7 +19,7 @@ const MyServices = () => {
 					/>
 				}
 			>
-				My Services
+				<Link href="#my-services"> My Services</Link>
 			</Button>
 		</div>
 	);
