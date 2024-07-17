@@ -153,13 +153,13 @@ export default function Home() {
 					<Header />
 				</div>
 
-				<main className="flex flex-col items-center justify-center text-center ">
-					<section
-						className="bg-cover grid w-full place-items-center bg-center min-h-screen"
-						style={{
-							backgroundImage: "url(/home/background.jpg)",
-						}}
-					>
+				<main
+					className="bg-cover grid w-full place-items-center bg-center min-h-screen"
+					style={{
+						backgroundImage: "url(/home/background.jpg)",
+					}}
+				>
+					<section className="grid w-full place-items-center bg-center min-h-screen">
 						<div className="hero-content text-center">
 							<div className="max-w-md">
 								<h2 className="text-5xl md:text-7xl font-bold">
@@ -179,21 +179,15 @@ export default function Home() {
 							<MyServices />
 						</div>
 					</section>
-					<section
-						className="hero min-h-screen"
-						style={{
-							backgroundImage: "url(/services/background.jpg)",
-						}}
-					>
-						<h2 className="text-5xl md:text-7xl font-bold">
-							Web Designer
-						</h2>
-
+					<section className="bg-cover grid w-full place-items-center bg-center min-h-screen">
 						<ServiceSlider
 							imgs={placeholderImages}
 							carouselId="placeholder-carousel"
 							classNameCarousel="rounded-box"
 						/>
+						<h2 className="text-5xl md:text-7xl font-bold">
+							Web Designer
+						</h2>
 					</section>
 				</main>
 			</div>
