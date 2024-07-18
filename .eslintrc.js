@@ -105,5 +105,6 @@ module.exports = {
 		"react/no-array-index-key": "warn",
 		"consistent-return": "warn",
 		"prefer-destructuring": "warn",
+		"jsx-a11y/no-noninteractive-tabindex": "warn",
 	},
 };

@@ -52,12 +52,12 @@ const ServiceSlider: React.FC<IProps> = ({
 		}
 	}, [imgs.length, isAutoPlay, autoPlayInterval]);
 	return (
-		<div className="flex max-w-screen-lg">
+		<div className="flex md:w-full m-4 overflow-hidden">
 			<div
 				id={carouselId}
 				ref={carouselRef}
 				className={twMerge(
-					"carousel carousel-center rounded-box w-full space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent mask-gradient",
+					"carousel carousel-center rounded-box md:w-full space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent mask-gradient",
 					classNameCarousel
 				)}
 			>

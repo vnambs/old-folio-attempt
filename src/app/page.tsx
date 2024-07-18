@@ -150,13 +150,13 @@ export default function Home() {
 					mixBlendMode: "exclusion",
 				}}
 			/>
-			<div className="min-h-screen bg-black text-white">
-				<div className="grid place-items-center">
-					<Header />
-				</div>
+			<div className="grid place-items-center">
+				<Header />
+			</div>
 
+			<div className="min-h-screen bg-black text-white">
 				<main
-					className="bg-cover grid w-full place-items-center bg-center min-h-screen"
+					className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen "
 					style={{
 						backgroundImage: "url(/home/background.jpg)",
 					}}
@@ -181,14 +181,14 @@ export default function Home() {
 							<MyServices />
 						</div>
 					</section>
-					<section className="bg-cover grid w-full place-items-center bg-center min-h-screen">
-						<div className="place-items-center relative grid top-16">
+					<section className="flex md:grid w-full place-items-center bg-center">
+						<div className="relative grid top-16">
 							<ServiceSlider
 								imgs={placeholderImages}
 								carouselId="placeholder-carousel"
 								classNameCarousel="rounded-box"
 							/>
-							<div className="flex flex-row gap-4">
+							<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
 								<ServicesCard
 									number="01"
 									title="WEB DESIGN"
