@@ -7,20 +7,21 @@ import dynamic from "next/dynamic";
 const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
 	ssr: false,
 });
-const images =
-	"https://img.daisyui.com/images/stock/photo-1559703248-dcaaec9fab78.jpg";
-const images2 =
-	"https://img.daisyui.com/images/stock/photo-1565098772267-60af42b81ef2.jpg";
-const images3 =
-	"https://img.daisyui.com/images/stock/photo-1572635148818-ef6fd45eb394.jpg";
-const images4 =
-	"https://img.daisyui.com/images/stock/photo-1494253109108-2e30c049369b.jpg";
-const images5 =
-	"https://img.daisyui.com/images/stock/photo-1550258987-190a2d41a8ba.jpg";
-const images6 =
-	"https://img.daisyui.com/images/stock/photo-1559181567-c3190ca9959b.jpg";
-const images7 =
-	"https://img.daisyui.com/images/stock/photo-1601004890684-d8cbf643f5f2.jpg";
+const images = "/services/php.png";
+const images2 = "/services/laravel.png";
+const images3 = "/services/html5.png";
+const images4 = "/services/Javascript.png";
+const images5 = "/services/css.png";
+const images6 = "/services/typescript.png";
+const images7 = "/services/jquerry.png";
+const images8 = "/services/Bootstrap.png";
+const images9 = "/services/react.png";
+const images10 = "/services/sass.png";
+const images11 = "/services/nodejs.png";
+const images12 = "/services/wordpress.png";
+const images13 = "/services/gitlab.png";
+const images14 = "/services/wordpress.png";
+const images15 = "/services/github.png";
 
 export default function Home() {
 	const placeholderImages = [
@@ -53,35 +54,35 @@ export default function Home() {
 			alt: "image-7",
 		},
 		{
-			src: images,
+			src: images8,
 			alt: "image-8",
 		},
 		{
-			src: images2,
+			src: images9,
 			alt: "image-9",
 		},
 		{
-			src: images3,
+			src: images10,
 			alt: "image-10",
 		},
 		{
-			src: images4,
+			src: images11,
 			alt: "image-11",
 		},
 		{
-			src: images5,
+			src: images12,
 			alt: "image-12",
 		},
 		{
-			src: images6,
+			src: images13,
 			alt: "image-13",
 		},
 		{
-			src: images7,
+			src: images14,
 			alt: "image-14",
 		},
 		{
-			src: images,
+			src: images15,
 			alt: "image-1",
 		},
 		{
@@ -150,18 +151,18 @@ export default function Home() {
 					mixBlendMode: "exclusion",
 				}}
 			/>
-			<div className="min-h-screen bg-black text-white">
-				<div className="grid place-items-center">
-					<Header />
-				</div>
+			<div className="grid place-items-center">
+				<Header />
+			</div>
 
-				<main
-					className="bg-cover grid w-full place-items-center bg-center min-h-screen"
-					style={{
-						backgroundImage: "url(/home/background.jpg)",
-					}}
-				>
-					<section className="grid w-full place-items-center bg-center min-h-screen">
+			<div className="min-h-screen bg-black text-white">
+				<main className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen ">
+					<section
+						className="bg-cover grid w-full place-items-center bg-center min-h-screen"
+						style={{
+							backgroundImage: "url(/home/background.jpg)",
+						}}
+					>
 						<div className="hero-content text-center">
 							<div className="max-w-md">
 								<h2 className="text-5xl md:text-7xl font-bold">
@@ -181,14 +182,14 @@ export default function Home() {
 							<MyServices />
 						</div>
 					</section>
-					<section className="bg-cover grid w-full place-items-center bg-center min-h-screen">
-						<div className="place-items-center relative grid top-16">
+					<section className="flex md:grid w-full place-items-center bg-center min-h-screen">
+						<div className="relative grid top-16">
 							<ServiceSlider
 								imgs={placeholderImages}
 								carouselId="placeholder-carousel"
 								classNameCarousel="rounded-box"
 							/>
-							<div className="flex flex-row gap-4">
+							<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
 								<ServicesCard
 									number="01"
 									title="WEB DESIGN"

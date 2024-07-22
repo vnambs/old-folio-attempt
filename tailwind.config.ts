@@ -34,7 +34,7 @@ const config: Config = {
 	},
 	plugins: [
 		require("daisyui"),
-		function ({ addUtilities }:any) {
+		function ({ addUtilities }: any) {
 			addUtilities({
 				".mask-gradient": {
 					maskImage:
