@@ -23,7 +23,7 @@ const ServiceSlider: React.FC<IProps> = ({
 	classNameCarousel = "",
 	classNameForImage = "",
 	isAutoPlay = true,
-	autoPlayInterval = 100,
+	autoPlayInterval = 1,
 }) => {
 	const carouselRef = useRef<HTMLDivElement>(null);
 
