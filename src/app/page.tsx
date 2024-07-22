@@ -156,13 +156,13 @@ export default function Home() {
 			</div>
 
 			<div className="min-h-screen bg-black text-white">
-				<main
-					className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen "
-					style={{
-						backgroundImage: "url(/home/background.jpg)",
-					}}
-				>
-					<section className="grid w-full place-items-center bg-center min-h-screen">
+				<main className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen ">
+					<section
+						className="bg-cover grid w-full place-items-center bg-center min-h-screen"
+						style={{
+							backgroundImage: "url(/home/background.jpg)",
+						}}
+					>
 						<div className="hero-content text-center">
 							<div className="max-w-md">
 								<h2 className="text-5xl md:text-7xl font-bold">
