@@ -27,21 +27,30 @@ const Header = () => {
 					</div>
 					<nav className="flex items-center space-x-4 opacity-100">
 						<Link
-							href="/services"
+							href="#my-services"
 							className="text-white opacity-100"
 						>
 							Services
 						</Link>
 						<span className="block w-px h-5 bg-[rgb(218,197,167)]" />
-						<Link href="/work" className="text-white opacity-100">
+						<Link
+							href="/#my-work"
+							className="text-white opacity-100"
+						>
 							Work
 						</Link>
 						<span className="block w-px h-5 bg-[rgb(218,197,167)]" />
-						<Link href="/about" className="text-white opacity-100">
+						<Link
+							href="/#about-me"
+							className="text-white opacity-100"
+						>
 							About
 						</Link>
 						<span className="block w-px h-5 bg-[rgb(218,197,167)]" />
-						<Link href="/blog" className="text-white opacity-100">
+						<Link
+							href="/#my-blog"
+							className="text-white opacity-100"
+						>
 							Blog
 						</Link>
 					</nav>
@@ -104,16 +113,16 @@ const Header = () => {
 							tabIndex={0}
 							className="menu dropdown-content bg-base-100 rounded-box z-[1] mt-4 w-52 p-2 shadow"
 						>
-							<Link href="/services" className="opacity-100">
+							<Link href="/#my-services" className="opacity-100">
 								Services
 							</Link>
-							<Link href="/work" className="opacity-100">
+							<Link href="/#my-work" className="opacity-100">
 								Work
 							</Link>
-							<Link href="/about" className=" opacity-100">
+							<Link href="/#about-me" className=" opacity-100">
 								About
 							</Link>
-							<Link href="/blog" className=" opacity-100">
+							<Link href="/#my-blog" className=" opacity-100">
 								Blog
 							</Link>
 						</div>

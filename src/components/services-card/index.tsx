@@ -18,7 +18,7 @@ const ServicesCard: React.FC<CardProps> = ({
 	description,
 }) => {
 	return (
-		<div className="card  backdrop-blur-[150px] bg-transparent w-full m-3 md:w-96 shadow-xl">
+		<div className="card  backdrop-blur-[150px] bg-transparent w-full m-3 h-96 md:w-96 shadow-xl">
 			<div className="card-body">
 				<p className="text-sm text-gray-400">{number}</p>
 				<h2 className="card-title text-lg font-bold">{title}</h2>

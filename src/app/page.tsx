@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import ModalList from "@/components/modals-list";
 import MyServices from "@/components/my-services";
 import ServiceSlider from "@/components/service-slider";
 import ServicesCard from "@/components/services-card";
@@ -22,6 +23,8 @@ const images12 = "/services/wordpress.png";
 const images13 = "/services/gitlab.png";
 const images14 = "/services/wordpress.png";
 const images15 = "/services/github.png";
+
+const background = "url('/home/background.jpg')";
 
 export default function Home() {
 	const placeholderImages = [
@@ -160,7 +163,7 @@ export default function Home() {
 					<section
 						className="bg-cover grid w-full place-items-center bg-center min-h-screen"
 						style={{
-							backgroundImage: "url(/home/background.jpg)",
+							backgroundImage: background,
 						}}
 					>
 						<div className="hero-content text-center">
@@ -182,7 +185,13 @@ export default function Home() {
 							<MyServices />
 						</div>
 					</section>
-					<section className="flex md:grid w-full place-items-center bg-center min-h-screen">
+					<section
+						id="my-services"
+						className="flex md:grid w-full place-items-center bg-center min-h-screen"
+						style={{
+							backgroundImage: background,
+						}}
+					>
 						<div className="relative grid top-16">
 							<ServiceSlider
 								imgs={placeholderImages}
@@ -211,6 +220,19 @@ export default function Home() {
 									linkText="ABOUT WEB DESIGN"
 									link="https://www.google.com"
 								/>
+							</div>
+						</div>
+					</section>
+					<section
+						id="my-work"
+						className="flex md:grid w-full place-items-center bg-center min-h-screen"
+						style={{
+							backgroundImage: background,
+						}}
+					>
+						<div className="relative grid top-16">
+							<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
+								<ModalList />
 							</div>
 						</div>
 					</section>
