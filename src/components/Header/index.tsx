@@ -86,10 +86,6 @@ const Header = () => {
 							>
 								<Contact
 									id="contact_modal"
-									title="{modalData[index].title}"
-									content="{modalData[index].content}"
-									imageUrl="/test.jpg"
-									imageAlt="{card.imageAltf}"
 									onClose={handleCloseModal}
 								/>
 							</Modal>
