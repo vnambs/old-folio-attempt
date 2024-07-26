@@ -1,9 +1,21 @@
-// create Header components here
+"use client";
+
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import { CodeCircle, HambergerMenu } from "iconsax-react";
+import { Modal } from "../modal";
+import Contact from "../contact-modal";
 
 const Header = () => {
+	const [openModalId, setOpenModalId] = useState<string | null>(null);
+
+	const handleOpenModal = (id: string) => {
+		setOpenModalId(id);
+	};
+
+	const handleCloseModal = () => {
+		setOpenModalId(null);
+	};
 	return (
 		<>
 			<header className="navbar rounded-lg fixed top-6 w-auto backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100  hidden md:block z-50">
@@ -55,14 +67,33 @@ const Header = () => {
 						</Link>
 					</nav>
 					<div className="flex items-center ml-6 opacity-100">
-						<Link
-							href="/contact"
-							className="text-white opacity-100"
-						>
-							<span className="backdrop-blur-[15px] bg-[rgb(218,197,167)] border border-[rgba(218,197,167,0.15)] rounded-sm text-black py-2 px-4">
+						<div className="text-white opacity-100">
+							<span
+								className="backdrop-blur-[15px] bg-[rgb(218,197,167)] border border-[rgba(218,197,167,0.15)] rounded-sm text-black py-2 px-4"
+								onClick={() => handleOpenModal("contact_modal")}
+								role="button"
+								tabIndex={0}
+								onKeyDown={e => {
+									if (e.key === "Enter")
+										handleOpenModal("contact_modal");
+								}}
+							>
 								Let&apos;s talk
 							</span>
-						</Link>
+							<Modal
+								id="contact_modal"
+								isOpen={openModalId === "contact_modal"}
+							>
+								<Contact
+									id="contact_modal"
+									title="{modalData[index].title}"
+									content="{modalData[index].content}"
+									imageUrl="/test.jpg"
+									imageAlt="{card.imageAltf}"
+									onClose={handleCloseModal}
+								/>
+							</Modal>
+						</div>
 					</div>
 				</div>
 			</header>
