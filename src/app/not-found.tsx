@@ -1,8 +1,6 @@
 import dynamic from "next/dynamic";
 
-const Scene = dynamic(() => import("@/components/three/Scene"), {
-	ssr: true,
-});
+import Scene from "@/components/three/Scene";
 
 export default async function NotFound() {
 	return (
