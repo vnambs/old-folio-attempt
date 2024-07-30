@@ -1,243 +1,244 @@
-import Header from "@/components/Header";
-import ModalList from "@/components/modals-list";
-import MyServices from "@/components/my-services";
-import ServiceSlider from "@/components/service-slider";
-import ServicesCard from "@/components/services-card";
-import dynamic from "next/dynamic";
+"use client";
 
-const AnimatedCursor = dynamic(() => import("react-animated-cursor"), {
-	ssr: false,
-});
-const images = "/services/php.png";
-const images2 = "/services/laravel.png";
-const images3 = "/services/html5.png";
-const images4 = "/services/Javascript.png";
-const images5 = "/services/css.png";
-const images6 = "/services/typescript.png";
-const images7 = "/services/jquerry.png";
-const images8 = "/services/Bootstrap.png";
-const images9 = "/services/react.png";
-const images10 = "/services/sass.png";
-const images11 = "/services/nodejs.png";
-const images12 = "/services/wordpress.png";
-const images13 = "/services/gitlab.png";
-const images14 = "/services/wordpress.png";
-const images15 = "/services/github.png";
+import dynamic from "next/dynamic";
+import { usePathname } from "next/navigation";
+import { useEffect, useState, useRef } from "react";
+import useMouse from "@react-hook/mouse-position";
+import { motion } from "framer-motion";
+
+import styles from "./cursor.module.css";
+
+// Dynamically import components
+const Header = dynamic(() => import("@/components/Header"));
+const Loading = dynamic(() => import("@/components/loading-page/loading"));
+const ModalList = dynamic(() => import("@/components/modals-list"));
+const MyServices = dynamic(() => import("@/components/my-services"));
+const ServiceSlider = dynamic(() => import("@/components/service-slider"));
+const ServicesCard = dynamic(() => import("@/components/services-card"));
+
+// Define image sources and create placeholder images array
+const imageSources = [
+	"/services/php.png",
+	"/services/laravel.png",
+	"/services/html5.png",
+	"/services/Javascript.png",
+	"/services/css.png",
+	"/services/typescript.png",
+	"/services/jquerry.png",
+	"/services/Bootstrap.png",
+	"/services/react.png",
+	"/services/sass.png",
+	"/services/nodejs.png",
+	"/services/wordpress.png",
+	"/services/gitlab.png",
+	"/services/github.png",
+];
+
+const generateImageObjects = () =>
+	imageSources.flatMap((src, index) => [
+		{ src, alt: `image-${index + 1}` },
+		{ src, alt: `image-${index + 1}-copy` },
+	]);
+
+const placeholderImages = generateImageObjects();
 
 const background = "url('/home/background.jpg')";
 
 export default function Home() {
-	const placeholderImages = [
-		{
-			src: images,
-			alt: "image-1",
-		},
-		{
-			src: images2,
-			alt: "image-2",
-		},
-		{
-			src: images3,
-			alt: "image-3",
-		},
-		{
-			src: images4,
-			alt: "image-4",
-		},
-		{
-			src: images5,
-			alt: "image-5",
-		},
-		{
-			src: images6,
-			alt: "image-6",
-		},
-		{
-			src: images7,
-			alt: "image-7",
-		},
-		{
-			src: images8,
-			alt: "image-8",
-		},
-		{
-			src: images9,
-			alt: "image-9",
-		},
-		{
-			src: images10,
-			alt: "image-10",
-		},
-		{
-			src: images11,
-			alt: "image-11",
-		},
-		{
-			src: images12,
-			alt: "image-12",
-		},
-		{
-			src: images13,
-			alt: "image-13",
-		},
-		{
-			src: images14,
-			alt: "image-14",
-		},
-		{
-			src: images15,
-			alt: "image-1",
-		},
-		{
-			src: images2,
-			alt: "image-22",
-		},
-		{
-			src: images3,
-			alt: "image-3",
-		},
-		{
-			src: images4,
-			alt: "image-4",
-		},
-		{
-			src: images5,
-			alt: "image-5",
-		},
-		{
-			src: images6,
-			alt: "image-6",
-		},
-		{
-			src: images7,
-			alt: "image-7",
-		},
-		{
-			src: images,
-			alt: "image-8",
-		},
-		{
-			src: images2,
-			alt: "image-9",
-		},
-		{
-			src: images3,
-			alt: "image-10",
-		},
-		{
-			src: images4,
-			alt: "image-11",
-		},
-		{
-			src: images5,
-			alt: "image-12",
-		},
-		{
-			src: images6,
-			alt: "image-13",
-		},
-		{
-			src: images7,
-			alt: "image-14",
-		},
-	];
-	return (
-		<>
-			<AnimatedCursor
-				color="255, 255, 255"
-				innerSize={8}
-				outerSize={35}
-				innerScale={1}
-				outerScale={1.7}
-				outerAlpha={1}
-				outerStyle={{
-					mixBlendMode: "exclusion",
-				}}
-			/>
-			<div className="grid place-items-center">
-				<Header />
-			</div>
+	const ref = useRef<HTMLDivElement | null>(null);
+	const [loading, setLoading] = useState(true);
+	const pathname = usePathname();
+	const [cursorText, setCursorText] = useState("");
+	const [cursorVariant, setCursorVariant] = useState("default");
 
-			<div className="min-h-screen bg-black text-white">
-				<main className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen ">
-					<section
-						className="bg-cover grid w-full place-items-center bg-center min-h-screen"
-						style={{
-							backgroundImage: background,
-						}}
+	const mouse = useMouse(ref, {
+		enterDelay: 200,
+		leaveDelay: 200,
+	});
+
+	let mouseXPosition = -100;
+	let mouseYPosition = -100;
+
+	if (mouse.x !== null) {
+		mouseXPosition = mouse.clientX ?? 160;
+	}
+
+	if (mouse.y !== null) {
+		mouseYPosition = mouse.clientY ?? 180;
+	}
+
+	const variants = {
+		default: {
+			opacity: 1,
+			height: 15,
+			width: 15,
+			fontSize: "16px",
+			backgroundColor: "#fff",
+			x: mouseXPosition - 7,
+			y: mouseYPosition - 7,
+			transition: {
+				type: "spring",
+				mass: 0.6,
+			},
+		},
+		project: {
+			opacity: 1,
+			backgroundColor: "#fff",
+			color: "#000",
+			height: 80,
+			width: 80,
+			fontSize: "18px",
+			x: mouseXPosition - 32,
+			y: mouseYPosition - 32,
+		},
+		contact: {
+			opacity: 1,
+			backgroundColor: "#FFBCBC",
+			color: "#000",
+			height: 64,
+			width: 64,
+			fontSize: "32px",
+			x: mouseXPosition - 48,
+			y: mouseYPosition - 48,
+		},
+	};
+
+	const spring = {
+		type: "spring",
+		stiffness: 500,
+		damping: 28,
+		restDelta: 0.001,
+	};
+
+	function projectEnter() {
+		setCursorText("");
+		setCursorVariant("project");
+	}
+
+	function projectLeave() {
+		setCursorText("");
+		setCursorVariant("default");
+	}
+
+	function contactEnter() {
+		setCursorText("👋");
+		setCursorVariant("contact");
+	}
+
+	function contactLeave() {
+		setCursorText("");
+		setCursorVariant("default");
+	}
+
+	useEffect(() => {
+		setLoading(true);
+		const timer = setTimeout(() => setLoading(false), 8500); // Simulate loading delay
+
+		return () => clearTimeout(timer);
+	}, [pathname]);
+
+	return (
+		<div ref={ref}>
+			{loading ? (
+				<Loading />
+			) : (
+				<>
+					<motion.div
+						variants={variants}
+						className={styles.cursorCircle}
+						animate={cursorVariant}
+						transition={spring}
 					>
-						<div className="hero-content text-center">
-							<div className="max-w-md">
-								<h2 className="text-5xl md:text-7xl font-bold">
-									Web Designer
-								</h2>
-								<h3 className="text-3xl md:text-5xl italic">
-									{" "}
-									& Developer
-								</h3>
-								<p className="text-xl md:text-2xl mt-5">
-									Premium Web Design, Development, and SEO
-									services to help your business stand out.
-								</p>
-							</div>
-						</div>
-						<div className="bottom-2 absolute">
-							<MyServices />
-						</div>
-					</section>
-					<section
-						id="my-services"
-						className="flex md:grid w-full place-items-center bg-center min-h-screen"
-						style={{
-							backgroundImage: background,
-						}}
-					>
-						<div className="relative grid top-16">
-							<ServiceSlider
-								imgs={placeholderImages}
-								carouselId="placeholder-carousel"
-								classNameCarousel="rounded-box"
-							/>
-							<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
-								<ServicesCard
-									number="01"
-									title="WEB DESIGN"
-									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
-									linkText="ABOUT WEB DESIGN"
-									link="https://www.google.com"
-								/>
-								<ServicesCard
-									number="02"
-									title="WEB DESIGN"
-									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
-									linkText="ABOUT WEB DESIGN"
-									link="https://www.google.com"
-								/>
-								<ServicesCard
-									number="03"
-									title="WEB DESIGN"
-									description="Visually stunning web designs that captivate your audience by blending your brand voice and customer needs."
-									linkText="ABOUT WEB DESIGN"
-									link="https://www.google.com"
-								/>
-							</div>
-						</div>
-					</section>
-					<section
-						id="my-work"
-						className="flex md:grid w-full place-items-center bg-center min-h-screen"
-						style={{
-							backgroundImage: background,
-						}}
-					>
-						<div className="relative grid top-16">
-							<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
-								<ModalList />
-							</div>
-						</div>
-					</section>
-				</main>
-			</div>
-		</>
+						<span className="cursorText">{cursorText}</span>
+					</motion.div>
+					<div className="grid place-items-center">
+						<Header />
+					</div>
+
+					<div className="min-h-screen bg-black text-white">
+						<main className="bg-repeat md:bg-cover grid w-full place-items-center bg-center min-h-screen ">
+							<section
+								className="bg-cover grid w-full place-items-center bg-center min-h-screen"
+								style={{
+									backgroundImage: background,
+								}}
+							>
+								<div
+									className="hero-content text-center"
+									onMouseEnter={projectEnter}
+									onMouseLeave={projectLeave}
+								>
+									<div className="max-w-md">
+										<h2 className="text-5xl md:text-7xl font-bold">
+											Web Designer
+										</h2>
+										<h3 className="text-3xl md:text-5xl italic">
+											{" "}
+											& Developer
+										</h3>
+										<p className="text-xl md:text-2xl mt-5">
+											Premium Web Design, Development, and
+											SEO services to help your business
+											stand out.
+										</p>
+									</div>
+								</div>
+								<div className="bottom-2 absolute">
+									<MyServices />
+								</div>
+							</section>
+
+							<section
+								id="my-services"
+								className="flex md:grid w-full place-items-center bg-center min-h-screen"
+								style={{
+									backgroundImage: background,
+								}}
+								onMouseEnter={contactEnter}
+								onMouseLeave={contactLeave}
+							>
+								<div className="relative grid top-16">
+									<ServiceSlider
+										imgs={placeholderImages}
+										carouselId="placeholder-carousel"
+										classNameCarousel="rounded-box"
+									/>
+									<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
+										{[
+											"WEB DESIGN",
+											"WEB DEVELOPMENT",
+											"SEO",
+										].map((title, index) => (
+											<ServicesCard
+												key={index}
+												number={`0${index + 1}`}
+												title={title}
+												description={`Visually stunning ${title.toLowerCase()} that captivate your audience by blending your brand voice and customer needs.`}
+												linkText={`ABOUT ${title}`}
+												link="https://www.google.com"
+											/>
+										))}
+									</div>
+								</div>
+							</section>
+
+							<section
+								id="my-work"
+								className="flex md:grid w-full place-items-center bg-center min-h-screen"
+								style={{
+									backgroundImage: background,
+								}}
+							>
+								<div className="relative grid top-16">
+									<div className="place-items-center max-w-screen-sm md:max-w-full grid md:w-auto md:flex md:flex-row md:gap-4 mx-auto p-4">
+										<ModalList />
+									</div>
+								</div>
+							</section>
+						</main>
+					</div>
+				</>
+			)}
+		</div>
 	);
 }
