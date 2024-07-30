@@ -1,5 +1,3 @@
-import dynamic from "next/dynamic";
-
 import Scene from "@/components/three/Scene";
 
 export default async function NotFound() {
