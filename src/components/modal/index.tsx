@@ -9,7 +9,6 @@ interface IndexProps {
 export function Modal({ children, id, isOpen }: IndexProps) {
 	const dialogRef = useRef<HTMLDialogElement>(null);
 	useEffect(() => {
-		console.log(isOpen);
 		if (isOpen) {
 			dialogRef.current?.showModal();
 		} else {
