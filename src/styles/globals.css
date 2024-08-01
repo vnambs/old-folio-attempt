@@ -6,6 +6,9 @@
 	--foreground-rgb: 0, 0, 0;
 	--background-start-rgb: 214, 219, 220;
 	--background-end-rgb: 255, 255, 255;
+	--font-bergman: "Bergman", sans-serif;
+	--font-acid-grotesk: "Acid Grotesk", sans-serif;
+	--font-test-tiempos: "Test Tiempos", serif;
 }
 
 @media (prefers-color-scheme: dark) {

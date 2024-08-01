@@ -3,6 +3,7 @@
 import React, { useState, forwardRef, useEffect } from "react";
 import Link from "next/link";
 import { CodeCircle, HambergerMenu } from "iconsax-react";
+import { acidGroteskFonts } from "@/fonts";
 import { Modal } from "../modal";
 import Contact from "../contact-modal";
 import Magnetic from "../magnetic";
@@ -23,7 +24,7 @@ const Header = forwardRef<HTMLDivElement, any>((props, ref) => {
 	return (
 		<>
 			<header
-				className="navbar rounded-lg fixed top-6 w-auto backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100  hidden md:block z-50"
+				className={`navbar ${acidGroteskFonts.className} font-light uppercase rounded-lg fixed top-6 w-auto backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100  hidden md:block z-50`}
 				{...props}
 			>
 				<div className="flex justify-between items-center p-5">

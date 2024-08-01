@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import React from "react";
 import "../styles/globals.css";
+import { bergmans } from "./fonts";
 
 const title = "Jonathan Voary - Professional Web Developer Portfolio";
 const description =
@@ -61,7 +62,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body>{children}</body>
+			<body className={`${bergmans.className}`}>{children}</body>
 		</html>
 	);
 }

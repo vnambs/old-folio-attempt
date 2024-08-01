@@ -29,6 +29,13 @@ const config: Config = {
 
 					error: "#f87171",
 				},
+				extend: {
+					fontFamily: {
+						bergman: ["var(--font-bergman)", "sans-serif"],
+						acidGrotesk: ["var(--font-acid-grotesk)", "sans-serif"],
+						testTiempos: ["var(--font-test-tiempos)", "serif"],
+					},
+				},
 			},
 		],
 	},

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, MutableRefObject, useEffect } from "react";
+import { useCursor } from "@/context/CursorContext";
 import { motion, useMotionValue } from "framer-motion";
 import useMouse from "@react-hook/mouse-position";
 import styles from "./cursor.module.css";
@@ -8,17 +9,10 @@ import styles from "./cursor.module.css";
 interface CustomCursorProps {
 	parentRef: MutableRefObject<HTMLElement | null>;
 	stickyRef: MutableRefObject<HTMLElement | null>;
-	cursorVariant: string;
-
-	cursorText: string;
 }
 
-const CustomCursor = ({
-	parentRef,
-	cursorVariant,
-	cursorText,
-	stickyRef,
-}: CustomCursorProps) => {
+const CustomCursor = ({ parentRef, stickyRef }: CustomCursorProps) => {
+	const { cursorText, cursorVariant } = useCursor();
 	const [isHovered, setIsHovered] = useState(false);
 	const cursorSize = isHovered ? 60 : 15;
 
