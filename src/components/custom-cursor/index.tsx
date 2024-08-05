@@ -83,7 +83,6 @@ const CustomCursor = ({ parentRef, stickyRef }: CustomCursorProps) => {
 		if (stickyElement) {
 			const handleMouseEnter = () => setIsHovered(true);
 			const handleMouseLeave = () => setIsHovered(false);
-			console.log(isHovered);
 
 			stickyElement.addEventListener("mouseenter", handleMouseEnter);
 			stickyElement.addEventListener("mouseleave", handleMouseLeave);
@@ -104,7 +103,6 @@ const CustomCursor = ({ parentRef, stickyRef }: CustomCursorProps) => {
 	useEffect(() => {
 		if (mouse.clientX !== null && mouse.clientY !== null) {
 			if (isHovered) {
-				console.log("ato");
 				const { left, top, height, width } =
 					stickyRef.current?.getBoundingClientRect() || {};
 				const center = {

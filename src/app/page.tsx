@@ -4,6 +4,7 @@ import dynamic from "next/dynamic";
 import { useEffect, useState, useRef } from "react";
 import { CursorProvider } from "@/context/CursorContext";
 import CustomCursor from "@/components/custom-cursor";
+import { AnimatePresence } from "framer-motion";
 
 // const Header = dynamic(() => import("@/components/Header"));
 import Header from "@/components/Header";
@@ -21,19 +22,33 @@ const Home = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setLoading(true);
-		const timer = setTimeout(() => setLoading(false), 8500); // Simulate loading delay
+		// setLoading(true);
+		// const timer = setTimeout(() => setLoading(false), 8500); // Simulate loading delay
 
-		return () => clearTimeout(timer);
+		// return () => clearTimeout(timer);
+		setLoading(true);
+		(async () => {
+			const LocomotiveScroll = (await import("locomotive-scroll"))
+				.default;
+			const locomotiveScroll = new LocomotiveScroll();
+
+			setTimeout(() => {
+				setLoading(false);
+				document.body.style.cursor = "default";
+				locomotiveScroll.scrollTo("[data-scroll-container]");
+			}, 8500);
+		})();
 	}, []);
 
 	return (
 		<CursorProvider>
 			<div ref={ref}>
 				{loading ? (
-					<Loading />
+					<AnimatePresence mode="wait">
+						<Loading />
+					</AnimatePresence>
 				) : (
-					<>
+					<div data-scroll-container>
 						<div className="grid place-items-center">
 							<Header ref={stickyElements} />
 						</div>
@@ -50,7 +65,7 @@ const Home = () => {
 								<MyWorkSection background={background} />
 							</main>
 						</div>
-					</>
+					</div>
 				)}
 			</div>
 		</CursorProvider>

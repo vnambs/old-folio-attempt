@@ -1,100 +1,66 @@
-"use client";
+import React, { useMemo } from "react";
+import { Logo, LogoList } from "./icon";
 
-import React, { useEffect, useRef } from "react";
-import { twMerge } from "tailwind-merge";
-
-type Iimg = {
-	src: string;
-	alt?: string;
+const shuffleArray = (array: Logo[]): Logo[] => {
+	const shuffledArray = array.slice(); // Copie de l'original
+	for (let i = shuffledArray.length - 1; i > 0; i - 1) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[shuffledArray[i], shuffledArray[j]] = [
+			shuffledArray[j],
+			shuffledArray[i],
+		];
+	}
+	return shuffledArray;
 };
 
-type IProps = {
-	imgs: Iimg[];
-	carouselId: string;
-	classNameCarousel?: string;
-	classNameForImage?: string;
-	isAutoPlay?: boolean;
-	autoPlayInterval?: number;
+const extendArray = (array: Logo[], count: number): Logo[] => {
+	const extendedArray = [];
+	for (let i = 0; i < count; i + 1) {
+		extendedArray.push(...array);
+	}
+	return extendedArray;
 };
 
-const ServiceSlider: React.FC<IProps> = ({
-	imgs,
-	carouselId,
-	classNameCarousel = "",
-	classNameForImage = "",
-	isAutoPlay = true,
-	autoPlayInterval = 1,
-}) => {
-	const carouselRef = useRef<HTMLDivElement>(null);
+interface ServicesBackgroundProps {
+	children: React.ReactNode;
+}
 
-	useEffect(() => {
-		const carousel = carouselRef.current;
-		if (carousel) {
-			const totalImages = imgs.length;
-			const singleImageWidth = carousel.clientWidth / totalImages;
+export default function Index({ children }: ServicesBackgroundProps) {
+	const shuffledLogos = useMemo(() => shuffleArray(LogoList), []);
+	const logoSize = 97; // Taille d'un logo (en pixels)
+	const screenWidth = window.innerWidth; // Largeur de l'écran
+	const screenHeight = window.innerHeight; // Hauteur de l'écran
+	const logosPerRow = Math.ceil(screenWidth / logoSize);
+	const rowsNeeded = Math.ceil(screenHeight / logoSize);
+	const totalLogosNeeded = logosPerRow * rowsNeeded;
 
-			if (isAutoPlay) {
-				const interval = setInterval(() => {
-					const maxScrollLeft =
-						carousel.scrollWidth - carousel.clientWidth;
-					if (
-						carousel.scrollLeft >=
-						maxScrollLeft - singleImageWidth
-					) {
-						carousel.scrollLeft = 0;
-					} else {
-						carousel.scrollLeft += singleImageWidth;
-					}
-				}, autoPlayInterval);
-
-				return () => clearInterval(interval);
-			}
-		}
-	}, [imgs.length, isAutoPlay, autoPlayInterval]);
-	return (
-		<div className="flex md:w-full m-4 overflow-hidden">
-			<div
-				id={carouselId}
-				ref={carouselRef}
-				className={twMerge(
-					"carousel carousel-center rounded-box md:w-full space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent mask-gradient",
-					classNameCarousel
-				)}
-			>
-				{imgs.map((img, index) => (
-					<div key={index} className="carousel-item">
-						<img
-							src={img.src}
-							className={twMerge(
-								"rounded-box",
-								classNameForImage
-							)}
-							alt={img.alt || `image-${index}`}
-						/>
-					</div>
-				))}
-				{imgs.map((img, index) => (
-					<div key={`clone-${index}`} className="carousel-item">
-						<img
-							src={img.src}
-							className={twMerge(
-								"rounded-box",
-								classNameForImage
-							)}
-							alt={img.alt || `image-clone-${index}`}
-						/>
-					</div>
-				))}
-			</div>
-		</div>
+	const extendedLogos = useMemo(
+		() =>
+			extendArray(
+				shuffledLogos,
+				Math.ceil(totalLogosNeeded / LogoList.length)
+			),
+		[shuffledLogos, totalLogosNeeded]
 	);
-};
 
-ServiceSlider.defaultProps = {
-	classNameCarousel: "",
-	classNameForImage: "",
-	isAutoPlay: true,
-	autoPlayInterval: 3000,
-};
+	return (
+		<>
+			<div className="blur-sm mask-gradient">
+				<div className="relative top-0 bottom-0 flex flex-wrap justify-around items-center overflow-hidden content-stretch">
+					{extendedLogos
+						.slice(0, totalLogosNeeded)
+						.map((logo, index) => (
+							<div
+								key={index}
+								className="flex items-center justify-center w-[97px] h-[97px]"
+							>
+								<img src={logo.src} alt={logo.alt} />
+							</div>
+						))}
+				</div>
+			</div>
 
-export default ServiceSlider;
+			{children}
+		</>
+	);
+}

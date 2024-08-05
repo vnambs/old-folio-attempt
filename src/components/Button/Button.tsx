@@ -1,5 +1,6 @@
 import React from "react";
 import { Color, Size } from "./Types";
+import Magnetic from "../magnetic";
 
 const disabledClass = "bg-disabled text-disabled";
 
@@ -72,18 +73,23 @@ const Button = ({
 		block: "btn-block",
 	};
 	const ButtonClassName = `${getVariant(variant, disabled)} ${className} ${colorClasses[color]} ${sizeVariant[size]} ${textColors[color]}`;
+
 	return (
-		<button
-			type={type}
-			className={ButtonClassName}
-			disabled={disabled}
-			{...rest}
-			onClick={onClick}
-		>
-			{icon}
-			<span className={`${padding} ${fontSize || ""}`}>{children}</span>
-			{iconAfter}
-		</button>
+		<Magnetic>
+			<button
+				type={type}
+				className={ButtonClassName}
+				disabled={disabled}
+				{...rest}
+				onClick={onClick}
+			>
+				{icon}
+				<span className={`${padding} ${fontSize || ""}`}>
+					{children}
+				</span>
+				{iconAfter}
+			</button>
+		</Magnetic>
 	);
 };
 

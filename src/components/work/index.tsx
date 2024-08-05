@@ -8,6 +8,7 @@ interface MyWorkSectionProps {
 const MyWorkSection = ({ background }: MyWorkSectionProps) => {
 	return (
 		<section
+			data-scroll-section
 			id="my-work"
 			className="flex md:grid w-full place-items-center bg-center min-h-screen"
 			style={{ backgroundImage: background }}
