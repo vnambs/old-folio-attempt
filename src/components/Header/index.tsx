@@ -110,7 +110,7 @@ const Header = forwardRef<HTMLDivElement, any>((props, ref) => {
 					</div>
 				</div>
 			</header>
-			<header className="navbar rounded-lg w-auto text-xl max-w-screen fixed top-6 backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100 z-50 md:hidden">
+			<header className="navbar rounded-lg w-auto text-xl max-w-screen fixed top-6 backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100 z-49 md:hidden">
 				<div className="flex items-center gap-8 p-5">
 					<div className="flex items-center space-x-4">
 						<Link href="/">

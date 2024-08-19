@@ -36,6 +36,7 @@ const Home = () => {
 				setLoading(false);
 				document.body.style.cursor = "default";
 				locomotiveScroll.scrollTo("[data-scroll-container]");
+				window.scrollTo(0, 0); // Scroll to the top of the page
 			}, 8500);
 		})();
 	}, []);
@@ -48,7 +49,7 @@ const Home = () => {
 						<Loading />
 					</AnimatePresence>
 				) : (
-					<div data-scroll-container>
+					<div>
 						<div className="grid place-items-center">
 							<Header ref={stickyElements} />
 						</div>

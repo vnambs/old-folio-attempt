@@ -68,7 +68,6 @@ export default function LandingPages({ background }: HeroSectionProps) {
 	};
 	return (
 		<motion.section
-			data-scroll-section
 			className="bg-cover grid w-full place-items-center bg-center min-h-screen overflow-hidden"
 			style={{ backgroundImage: background }}
 			initial="initial"
@@ -108,8 +107,8 @@ export default function LandingPages({ background }: HeroSectionProps) {
 				</div>
 			</div>
 
-			<div className="absolute top-[calc(100vh-350px)] ">
-				<div ref={slider} className="relative whitespace-nowrap ">
+			<div className="absolute top-[calc(93vh-350px)] ">
+				<div ref={slider} className="relative whitespace-nowrap">
 					<p
 						ref={firstText}
 						className="relative m-0 text-white text-[230px] font-medium pr-[50px] opacity-20"
@@ -123,9 +122,9 @@ export default function LandingPages({ background }: HeroSectionProps) {
 						Freelance Developer -
 					</p>
 				</div>
-			</div>
-			<div className="bottom-2 absolute">
-				<MyServices />
+				<div className="bottom-2 ">
+					<MyServices />
+				</div>
 			</div>
 		</motion.section>
 	);
