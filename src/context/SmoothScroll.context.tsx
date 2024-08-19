@@ -12,7 +12,7 @@ interface SmoothScrollContextType {
 
 interface SmoothScrollProviderProps {
 	children: ReactNode;
-	options?: SmoothScrollOptions; //eslint-disable-line react/require-default-props
+	options?: SmoothScrollOptions; // eslint-disable-line react/require-default-props
 }
 
 export const SmoothScrollContext = createContext<SmoothScrollContextType>({
@@ -47,7 +47,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({
 		}
 
 		return () => {
-			scroll && scroll.destroy(); //eslint-disable-line no-unused-expressions
+			scroll && scroll.destroy(); // eslint-disable-line no-unused-expressions
 		};
 	}, [scroll, options]); // eslint-disable-line react-hooks/exhaustive-deps
 
