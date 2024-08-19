@@ -4,76 +4,8 @@ import React, { useState } from "react";
 import Modals from "../modal-cart/modals";
 import { Modal } from "../modal";
 import Card from "../card";
-
-const cardData = [
-	{
-		id: "modal_1",
-		imageUrl: "/shubham-dhage-PspvX6Zx6J4-unsplash.jpg",
-		imageAlt: "Shoes",
-		title: "Shoes!",
-		description: "If a dog chews shoes whose shoes does he choose?",
-		buttonText: "Buy Now",
-	},
-	{
-		id: "modal_2",
-		imageUrl: "/shubham-dhage-TIRAs1UxvP8-unsplash.jpg",
-		imageAlt: "Mountain",
-		title: "Mountain!",
-		description: "Mountains are beautiful and serene.",
-		buttonText: "Explore Now",
-	},
-	{
-		id: "modal_3",
-		imageUrl: "/shubham-dhage-YNjl-o_oGXc-unsplash.jpg",
-		imageAlt: "Beach",
-		title: "Beach!",
-		description: "The beach is a perfect place to relax.",
-		buttonText: "Visit Now",
-	},
-	{
-		id: "modal_4",
-		imageUrl: "/services/background.jpg",
-		imageAlt: "Beach",
-		title: "Beach!",
-		description: "The beach is a perfect place to relax.",
-		buttonText: "Visit Now",
-	},
-];
-
-const modalData = [
-	{
-		id: "modal_1",
-		title: "Hello Shoes!",
-		content: "This modal is for shoes.",
-		imageUrl: "/shubham-dhage-PspvX6Zx6J4-unsplasht.jpg",
-		imageAlt: "Shoes",
-		closeText: "Close",
-	},
-	{
-		id: "modal_2",
-		title: "Hello Mountain!",
-		content: "This modal is for the mountain.",
-		imageUrl: "/shubham-dhage-TIRAs1UxvP8-unsplash.jpg",
-		imageAlt: "Shoes",
-		closeText: "Close",
-	},
-	{
-		id: "modal_3",
-		title: "Hello Beach!",
-		content: "This modal is for the beach.",
-		imageUrl: "/shubham-dhage-YNjl-o_oGXc-unsplash.jpg",
-		imageAlt: "Shoes",
-		closeText: "Close",
-	},
-	{
-		id: "modal_4",
-		title: "Hello TEST!",
-		content: "This modal is for the beach.",
-		imageUrl: "/services/background.jpg",
-		imageAlt: "Shoes",
-		closeText: "Close",
-	},
-];
+import { cardData } from "./card-data";
+import { modalData } from "./modal-data";
 
 const ModalList = () => {
 	// Helper function to randomly assign widths
@@ -117,7 +49,6 @@ const ModalList = () => {
 					</div>
 
 					{/* Modal component with props */}
-
 					<Modal id={card.id} isOpen={openModalId === card.id}>
 						<Modals
 							id={card.id}

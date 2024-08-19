@@ -1,100 +1,69 @@
-"use client";
+import React, { useMemo, useRef } from "react";
+import { AnimatePresence, motion, useInView } from "framer-motion";
+import { rangeNumber } from "@/lib/rangeNumber";
+import { iconContainerAnim, iconsAnim } from "@/lib/services-animations";
+import { extendArray } from "@/lib/shuffle";
+import { shuffleArray } from "@/lib/fisherYatesShuffle";
+import { useScreenDimensions } from "@/hooks/useScreenDimensions";
+import { LogoList } from "./icon";
 
-import React, { useEffect, useRef } from "react";
-import { twMerge } from "tailwind-merge";
+interface ServicesBackgroundProps {
+	children: React.ReactNode;
+}
 
-type Iimg = {
-	src: string;
-	alt?: string;
-};
+export default function Index({ children }: ServicesBackgroundProps) {
+	const ref = useRef(null);
+	const isInView = useInView(ref, { once: true });
+	const { screenWidth, screenHeight } = useScreenDimensions();
 
-type IProps = {
-	imgs: Iimg[];
-	carouselId: string;
-	classNameCarousel?: string;
-	classNameForImage?: string;
-	isAutoPlay?: boolean;
-	autoPlayInterval?: number;
-};
+	const logoSize = 90; // Size in pixels
+	const totalLogosNeeded =
+		Math.ceil(screenWidth / logoSize) * Math.ceil(screenHeight / logoSize);
 
-const ServiceSlider: React.FC<IProps> = ({
-	imgs,
-	carouselId,
-	classNameCarousel = "",
-	classNameForImage = "",
-	isAutoPlay = true,
-	autoPlayInterval = 1,
-}) => {
-	const carouselRef = useRef<HTMLDivElement>(null);
-
-	useEffect(() => {
-		const carousel = carouselRef.current;
-		if (carousel) {
-			const totalImages = imgs.length;
-			const singleImageWidth = carousel.clientWidth / totalImages;
-
-			if (isAutoPlay) {
-				const interval = setInterval(() => {
-					const maxScrollLeft =
-						carousel.scrollWidth - carousel.clientWidth;
-					if (
-						carousel.scrollLeft >=
-						maxScrollLeft - singleImageWidth
-					) {
-						carousel.scrollLeft = 0;
-					} else {
-						carousel.scrollLeft += singleImageWidth;
-					}
-				}, autoPlayInterval);
-
-				return () => clearInterval(interval);
-			}
-		}
-	}, [imgs.length, isAutoPlay, autoPlayInterval]);
-	return (
-		<div className="flex md:w-full m-4 overflow-hidden">
-			<div
-				id={carouselId}
-				ref={carouselRef}
-				className={twMerge(
-					"carousel carousel-center rounded-box md:w-full space-x-4 p-4 h-40 backdrop-blur-[30px] bg-transparent mask-gradient",
-					classNameCarousel
-				)}
-			>
-				{imgs.map((img, index) => (
-					<div key={index} className="carousel-item">
-						<img
-							src={img.src}
-							className={twMerge(
-								"rounded-box",
-								classNameForImage
-							)}
-							alt={img.alt || `image-${index}`}
-						/>
-					</div>
-				))}
-				{imgs.map((img, index) => (
-					<div key={`clone-${index}`} className="carousel-item">
-						<img
-							src={img.src}
-							className={twMerge(
-								"rounded-box",
-								classNameForImage
-							)}
-							alt={img.alt || `image-clone-${index}`}
-						/>
-					</div>
-				))}
-			</div>
-		</div>
+	const extendedLogos = useMemo(
+		() =>
+			extendArray(
+				shuffleArray(LogoList),
+				Math.ceil(totalLogosNeeded / LogoList.length)
+			),
+		[totalLogosNeeded]
 	);
-};
 
-ServiceSlider.defaultProps = {
-	classNameCarousel: "",
-	classNameForImage: "",
-	isAutoPlay: true,
-	autoPlayInterval: 3000,
-};
-
-export default ServiceSlider;
+	return (
+		<>
+			<motion.div className="blur-sm mask-gradient" ref={ref}>
+				<motion.div
+					variants={iconContainerAnim}
+					initial={isInView ? "init" : "end"}
+					animate={isInView ? "anim" : ""}
+					exit="end"
+					className="relative top-0 bottom-0 flex flex-wrap justify-around items-center overflow-hidden content-stretch"
+				>
+					<AnimatePresence>
+						{isInView &&
+							extendedLogos
+								.slice(0, totalLogosNeeded)
+								.map((logo, index) => (
+									<motion.div
+										key={index}
+										variants={iconsAnim}
+										className="flex items-center opacity-50 justify-center w-[90px] h-[90px]"
+									>
+										<img
+											src={logo.src}
+											alt={logo.alt}
+											style={{
+												width:
+													rangeNumber(50, 40, 120) /
+													1.9,
+											}}
+										/>
+									</motion.div>
+								))}
+					</AnimatePresence>
+				</motion.div>
+			</motion.div>
+			{children}
+		</>
+	);
+}

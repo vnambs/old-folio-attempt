@@ -1639,6 +1639,11 @@
   dependencies:
     glob "10.3.10"
 
+"@next/font@^14.2.5":
+  version "14.2.5"
+  resolved "https://registry.yarnpkg.com/@next/font/-/font-14.2.5.tgz#c409ae86ef508f35377455ba99526ac58908b3ff"
+  integrity sha512-e2f3M+tAuJPUyXwWtEPKlPfpPEKODiQvPjdxOWBZC+zgdGv18KfjTkEmopfkfpZ016yCvw5BmMPeuEU/uiDf9g==
+
 "@next/swc-darwin-arm64@14.2.1":
   version "14.2.1"
   resolved "https://registry.yarnpkg.com/@next/swc-darwin-arm64/-/swc-darwin-arm64-14.2.1.tgz#44ca580ccac1396fa45e2bcc6584238098491e71"
@@ -3028,6 +3033,13 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/gsap@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-3.0.0.tgz#28dc350ad89b6d19b13c8edbdf1dd74e8ee5c84f"
+  integrity sha512-BbWLi4WRHGze4C8NV7U7yRevuBFiPkPZZyGa0rryanvh/9HPUFXTNBXsGQxJZJq7Ix7j4RXMYodP3s+OsqCErg==
+  dependencies:
+    gsap "*"
+
 "@types/hast@^3.0.0":
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/@types/hast/-/hast-3.0.4.tgz#1d6b39993b82cea6ad783945b0508c25903e15aa"
@@ -3054,6 +3066,11 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
+
+"@types/locomotive-scroll@^4.1.3":
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/@types/locomotive-scroll/-/locomotive-scroll-4.1.3.tgz#1b7ccee1f535ec271a37011f59a23954cde44ebc"
+  integrity sha512-mo8BIiFA2OOyB/Mmv0U0WL9AjBisUdUi0AMeA6hcMODEFLZvwk0UUPM+yKzMnwfpYxC/LKNiZKXO7LQp+08mMg==
 
 "@types/lodash@^4.14.167":
   version "4.17.6"
@@ -4092,6 +4109,11 @@ better-opn@^3.0.2:
   dependencies:
     open "^8.0.4"
 
+bezier-easing@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/bezier-easing/-/bezier-easing-2.1.0.tgz#c04dfe8b926d6ecaca1813d69ff179b7c2025d86"
+  integrity sha512-gbIqZ/eslnUFC1tjEvtz0sgx+xTK20wDnYMIA27VA04R7w6xxXQPZDbibjA9DTWZRA2CXtwHykkVzlCaAJAZig==
+
 bidi-js@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/bidi-js/-/bidi-js-1.0.3.tgz#6f8bcf3c877c4d9220ddf49b9bb6930c88f877d2"
@@ -4113,6 +4135,11 @@ binary-extensions@^2.0.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.3.0.tgz#f6e14a97858d327252200242d4ccfe522c445522"
   integrity sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==
+
+bindall-standalone@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/bindall-standalone/-/bindall-standalone-1.0.5.tgz#f7430388f1c7f9a9ade0fc75a400e710f6692a1d"
+  integrity sha512-HDI7YBWXVJk/eoGz+e4lYQQJnYp1ZHcUvAY71lVptLMhQnDm86vD73AGPw2qIlgYR3P0bjmoAcXiA8qhFejBhA==
 
 bl@^4.0.3, bl@^4.1.0:
   version "4.1.0"
@@ -4426,7 +4453,7 @@ check-error@^1.0.3:
   dependencies:
     get-func-name "^2.0.2"
 
-chokidar@^3.5.3, chokidar@^3.6.0:
+"chokidar@>=3.0.0 <4.0.0", chokidar@^3.5.3, chokidar@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.6.0.tgz#197c6cc669ef2a8dc5e7b4d97ee4e092c3eb0d5b"
   integrity sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==
@@ -6856,6 +6883,11 @@ graphviz@0.0.9:
   dependencies:
     temp "~0.4.0"
 
+gsap@*, gsap@^3.12.5:
+  version "3.12.5"
+  resolved "https://registry.yarnpkg.com/gsap/-/gsap-3.12.5.tgz#136c02dad4c673b441bdb1ca00104bfcb4eae7f4"
+  integrity sha512-srBfnk4n+Oe/ZnMIOXt3gT605BX9x5+rh/prT2F1SsNJsU1XuMiP0E2aptW481OnonOGACZWBqseH5Z7csHxhQ==
+
 gunzip-maybe@^1.4.2:
   version "1.4.2"
   resolved "https://registry.yarnpkg.com/gunzip-maybe/-/gunzip-maybe-1.4.2.tgz#b913564ae3be0eda6f3de36464837a9cd94b98ac"
@@ -7123,6 +7155,11 @@ immediate@~3.0.5:
   version "3.0.6"
   resolved "https://registry.yarnpkg.com/immediate/-/immediate-3.0.6.tgz#9db1dbd0faf8de6fbe0f5dd5e56bb606280de69b"
   integrity sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==
+
+immutable@^4.0.0:
+  version "4.3.7"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.7.tgz#c70145fc90d89fb02021e65c84eb0226e4e5a381"
+  integrity sha512-1hqclzwYwjRDFLjcFxOM5AYkkG0rpFPpr1RLPMEuGczoS7YA8gLhy8SWXYRAA/XwfEHpfo3cw5JGioS32fnMRw==
 
 import-fresh@^3.2.1, import-fresh@^3.3.0:
   version "3.3.0"
@@ -7763,6 +7800,11 @@ lazy-universal-dotenv@^4.0.0:
     dotenv "^16.0.0"
     dotenv-expand "^10.0.0"
 
+lethargy@^1.0.2:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/lethargy/-/lethargy-1.0.9.tgz#138b0ae384d015c5233e0cc1eeba4d089af3c58b"
+  integrity sha512-nFM8blpCF9rqIL5mRAaTGc78W8oQixVtsD86jbEPvcI13+lDUYJf3R7DZQQL7tCiBpbGpGKMX2gwJFO9hiaOkg==
+
 leva@^0.9.35:
   version "0.9.35"
   resolved "https://registry.yarnpkg.com/leva/-/leva-0.9.35.tgz#0d44c0954ba28434b50636906e389c61dd2cbfd9"
@@ -7871,6 +7913,15 @@ locate-path@^7.1.0:
   integrity sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==
   dependencies:
     p-locate "^6.0.0"
+
+locomotive-scroll@^4.1.4:
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/locomotive-scroll/-/locomotive-scroll-4.1.4.tgz#a6d83ba3c07a9c51fc1a6d95b4be614d4dc5aad2"
+  integrity sha512-6i98cFF2SKg6wIPpwVPuo2FG8qL3USsdDeew78TEYZyLoqleMWNfkSDpWA6mPym4dOfTIBXc678VmGlkgx3fTA==
+  dependencies:
+    bezier-easing "^2.1.0"
+    smoothscroll-polyfill "^0.4.4"
+    virtual-scroll "^1.5.2"
 
 lodash.debounce@^4.0.8:
   version "4.0.8"
@@ -9899,6 +9950,15 @@ sass-lookup@^3.0.0:
   dependencies:
     commander "^2.16.0"
 
+sass@^1.77.8:
+  version "1.77.8"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.77.8.tgz#9f18b449ea401759ef7ec1752a16373e296b52bd"
+  integrity sha512-4UHg6prsrycW20fqLGPShtEvo/WyHRVRHwOP4DzkUrObWoWI05QBSfzU71TVB7PFaL104TwNaHpjlWXAZbQiNQ==
+  dependencies:
+    chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
+
 scheduler@^0.21.0:
   version "0.21.0"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.21.0.tgz#6fd2532ff5a6d877b6edb12f00d8ab7e8f308820"
@@ -10128,7 +10188,12 @@ slash@^5.1.0:
   resolved "https://registry.yarnpkg.com/slash/-/slash-5.1.0.tgz#be3adddcdf09ac38eebe8dcdc7b1a57a75b095ce"
   integrity sha512-ZA6oR3T/pEyuqwMgAKT0/hAv8oAXckzbkmR0UkUosQ+Mc4RxGoJkRmwHgHufaenlyAgE1Mxgpdcrf75y6XcnDg==
 
-source-map-js@^1.0.2, source-map-js@^1.2.0:
+smoothscroll-polyfill@^0.4.4:
+  version "0.4.4"
+  resolved "https://registry.yarnpkg.com/smoothscroll-polyfill/-/smoothscroll-polyfill-0.4.4.tgz#3a259131dc6930e6ca80003e1cb03b603b69abf8"
+  integrity sha512-TK5ZA9U5RqCwMpfoMq/l1mrH0JAR7y7KRvOBx0n2869aLxch+gT9GhN3yUfjiw+d/DiF1mKo14+hd62JyMmoBg==
+
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2, source-map-js@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.2.0.tgz#16b809c162517b5b8c3e7dcd315a2a5c2612b2af"
   integrity sha512-itJW8lvSA0TXEphiRoawsCksnlf8SyvmFzIhltqAHluXd88pkCd+cXJVHTDwdCr0IzwptSm035IHQktUu1QUMg==
@@ -10691,6 +10756,11 @@ timers-browserify@^2.0.12:
   dependencies:
     setimmediate "^1.0.4"
 
+tiny-emitter@^1.0.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-1.2.0.tgz#6dc845052cb08ebefc1874723b58f24a648c3b6f"
+  integrity sha512-rWjF00inHeWtT5UbQYAXoMI4hL6TRMqohuKCsODyPYYmfAxqfMnXLsIeNrbdPEkNxlk++rojVilTnI9IVmEBtA==
+
 tiny-invariant@^1.3.1, tiny-invariant@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/tiny-invariant/-/tiny-invariant-1.3.3.tgz#46680b7a873a0d5d10005995eb90a70d74d60127"
@@ -11167,6 +11237,16 @@ vary@~1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/vary/-/vary-1.1.2.tgz#2299f02c6ded30d4a5961b0b9f74524a18f634fc"
   integrity sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==
+
+virtual-scroll@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/virtual-scroll/-/virtual-scroll-1.5.2.tgz#cdc051135ea6a1ebaaecdd4a4f39b8ed807f0f53"
+  integrity sha512-7jDHwlKbHUho7CYU/HojE/VKFH8GV9P5fVWP2HCa7dRUOpVvwl93OBOKIIcb2mKd+vqsbVR/0zl0X70+3sUZqA==
+  dependencies:
+    bindall-standalone "^1.0.5"
+    lethargy "^1.0.2"
+    object-assign "^4.0.1"
+    tiny-emitter "^1.0.0"
 
 vm-browserify@^1.1.2:
   version "1.1.2"

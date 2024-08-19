@@ -12,6 +12,7 @@ const config: Config = {
 			{
 				mytheme: {
 					primary: "#4fc27e",
+					//primary:"#6EC277",
 
 					secondary: "#ffc247",
 
@@ -28,6 +29,13 @@ const config: Config = {
 					warning: "#fef3c7",
 
 					error: "#f87171",
+				},
+				extend: {
+					fontFamily: {
+						bergman: ["var(--font-bergman)", "sans-serif"],
+						acidGrotesk: ["var(--font-acid-grotesk)", "sans-serif"],
+						testTiempos: ["var(--font-test-tiempos)", "serif"],
+					},
 				},
 			},
 		],

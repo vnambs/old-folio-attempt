@@ -1,12 +1,14 @@
 "use client";
 
+import React, { useState, forwardRef, useEffect } from "react";
 import Link from "next/link";
-import React, { useState } from "react";
 import { CodeCircle, HambergerMenu } from "iconsax-react";
+import { acidGroteskFonts } from "@/fonts";
 import { Modal } from "../modal";
 import Contact from "../contact-modal";
+import Magnetic from "../magnetic";
 
-const Header = () => {
+const Header = forwardRef<HTMLDivElement, any>((props, ref) => {
 	const [openModalId, setOpenModalId] = useState<string | null>(null);
 
 	const handleOpenModal = (id: string) => {
@@ -16,9 +18,15 @@ const Header = () => {
 	const handleCloseModal = () => {
 		setOpenModalId(null);
 	};
+	useEffect(() => {
+		console.log("Header ref:", ref); // Should log the ref object
+	}, [ref]);
 	return (
 		<>
-			<header className="navbar rounded-lg fixed top-6 w-auto backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100  hidden md:block z-50">
+			<header
+				className={`navbar ${acidGroteskFonts.className} font-light uppercase rounded-lg fixed top-6 w-auto backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100  hidden md:block z-50`}
+				{...props}
+			>
 				<div className="flex justify-between items-center p-5">
 					<div className="flex items-center space-x-4">
 						<Link href="/">
@@ -67,19 +75,28 @@ const Header = () => {
 						</Link>
 					</nav>
 					<div className="flex items-center ml-6 opacity-100">
+						{" "}
 						<div className="text-white opacity-100">
-							<span
-								className="backdrop-blur-[15px] bg-[rgb(218,197,167)] border border-[rgba(218,197,167,0.15)] rounded-sm text-black py-2 px-4"
-								onClick={() => handleOpenModal("contact_modal")}
-								role="button"
-								tabIndex={0}
-								onKeyDown={e => {
-									if (e.key === "Enter")
-										handleOpenModal("contact_modal");
-								}}
-							>
-								Let&apos;s talk
-							</span>
+							<Magnetic>
+								<div ref={ref}>
+									<span
+										className="backdrop-blur-[15px] bg-[rgb(218,197,167)] border border-[rgba(218,197,167,0.15)] rounded-sm text-black py-2 px-4"
+										onClick={() =>
+											handleOpenModal("contact_modal")
+										}
+										role="button"
+										tabIndex={0}
+										onKeyDown={e => {
+											if (e.key === "Enter")
+												handleOpenModal(
+													"contact_modal"
+												);
+										}}
+									>
+										Let&apos;s talk
+									</span>
+								</div>
+							</Magnetic>
 							<Modal
 								id="contact_modal"
 								isOpen={openModalId === "contact_modal"}
@@ -93,7 +110,7 @@ const Header = () => {
 					</div>
 				</div>
 			</header>
-			<header className="navbar rounded-lg w-9/12 text-xl max-w-screen fixed top-6 backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100 z-50 md:hidden">
+			<header className="navbar rounded-lg w-auto text-xl max-w-screen fixed top-6 backdrop-blur-[30px] bg-transparent border border-[rgb(233,233,233)] opacity-100 z-49 md:hidden">
 				<div className="flex items-center gap-8 p-5">
 					<div className="flex items-center space-x-4">
 						<Link href="/">
@@ -158,6 +175,6 @@ const Header = () => {
 			</header>
 		</>
 	);
-};
+});
 
 export default Header;
