@@ -28,16 +28,24 @@ const Home = () => {
 		// return () => clearTimeout(timer);
 		setLoading(true);
 		(async () => {
-			const LocomotiveScroll = (await import("locomotive-scroll"))
-				.default;
-			const locomotiveScroll = new LocomotiveScroll();
+			try {
+				const LocomotiveScroll = (await import("locomotive-scroll"))
+					.default;
+				const locomotiveScroll = new LocomotiveScroll();
 
-			setTimeout(() => {
+				setTimeout(() => {
+					setLoading(false);
+					document.body.style.cursor = "default";
+					locomotiveScroll.scrollTo("[data-scroll-container]");
+					window.scrollTo(0, 0); // Scroll to the top of the page
+				}, 8500);
+			} catch (error) {
+				console.error(
+					"Erreur lors du chargement de LocomotiveScroll:",
+					error
+				);
 				setLoading(false);
-				document.body.style.cursor = "default";
-				locomotiveScroll.scrollTo("[data-scroll-container]");
-				window.scrollTo(0, 0); // Scroll to the top of the page
-			}, 8500);
+			}
 		})();
 	}, []);
 
