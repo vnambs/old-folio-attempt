@@ -67,10 +67,7 @@ const Header = forwardRef<HTMLDivElement, any>((props, ref) => {
 							About
 						</Link>
 						<span className="block w-px h-5 bg-[rgb(218,197,167)]" />
-						<Link
-							href="/#my-blog"
-							className="text-white opacity-100"
-						>
+						<Link href="/docu" className="text-white opacity-100">
 							Blog
 						</Link>
 					</nav>
@@ -166,7 +163,7 @@ const Header = forwardRef<HTMLDivElement, any>((props, ref) => {
 							<Link href="/#about-me" className=" opacity-100">
 								About
 							</Link>
-							<Link href="/#my-blog" className=" opacity-100">
+							<Link href="/docu" className=" opacity-100">
 								Blog
 							</Link>
 						</div>
